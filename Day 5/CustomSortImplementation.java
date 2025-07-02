@@ -23,8 +23,8 @@ public class CustomSortImplementation {
             new Person("Abhishek", 19)
         };
 
-        Arrays.sort(people, (a, b) -> a.age - b.age);
-        Arrays.sort(people, (a, b) -> a.name.length() - b.name.length());
+        // Arrays.sort(people, (a, b) -> a.age - b.age);
+        // Arrays.sort(people, (a, b) -> a.name.length() - b.name.length());
         Arrays.sort(people, (a, b) -> a.name.compareTo(b.name));
 
         System.out.println(Arrays.toString(people));
