@@ -17,6 +17,22 @@ class Activity{
 }
 
 public class ActivitySelection {
+    static int findMaximumNumberOfActivities(Activity[] activities){
+        Arrays.sort(activities, (a, b) -> a.finish - b.finish);
+
+        List<Activity> selected = new ArrayList<>();
+        selected.add(activities[0]);
+        int lastFinish = activities[0].finish;
+
+        for(int i= 1; i<activities.length; i++){
+            if(activities[i].start >= lastFinish){
+                lastFinish = activities[i].finish;
+                selected.add(activities[i]);
+            }
+        }
+
+        return selected.size();
+    }
     public static void main(String[] args) {
         Integer[] start = {3, 3, 1, 5};
         Integer[] finish = {7, 4, 2, 9};
@@ -27,22 +43,8 @@ public class ActivitySelection {
             activities[i] = new Activity(start[i], finish[i]);
         }
 
-        Arrays.sort(activities, (a, b) -> a.finish - b.finish);
-
-        List<Activity> selected = new ArrayList<>();
-        selected.add(activities[0]);
-        int lastFinish = activities[0].finish;
-
-        for(int i= 1; i<start.length; i++){
-            if(activities[i].start >= lastFinish){
-                lastFinish = activities[i].finish;
-                selected.add(activities[i]);
-            }
-        }
-
-        int numberOfActivities = selected.size();
-        System.out.println("Number of Activities: " + numberOfActivities);
-        System.out.println("Activities are: " + selected);
+       
+        System.out.println("Number of Activities: " + findMaximumNumberOfActivities(activities));
         
     }    
 }
