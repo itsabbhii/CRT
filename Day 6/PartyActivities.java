@@ -17,7 +17,7 @@ class Activity{
 }
 
 public class PartyActivities {
-    static int findMaximumNumberOfActivities(Activity[] activities){
+    static int maximumNumberOfActivities(Activity[] activities){
         Arrays.sort(activities, (a, b) -> a.finish - b.finish);
 
         List<Activity> selected = new ArrayList<>();
@@ -44,8 +44,7 @@ public class PartyActivities {
             activities[i] = new Activity(start, finish);
         }
 
-       
-        System.out.println(findMaximumNumberOfActivities(activities));
+        System.out.println(maximumNumberOfActivities(activities));
         
     }    
 }
