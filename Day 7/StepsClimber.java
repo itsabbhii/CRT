@@ -17,11 +17,23 @@ public class StepsClimber {
         return map.get(n);
     }
 
+    static BigInteger fibonacciUsingDp(int n){
+        if(n <= 1) return BigInteger.ONE;
+        BigInteger[] dp = new BigInteger[n+1];
+        dp[0] = BigInteger.ONE;
+        dp[1] = BigInteger.ONE;
+
+        for(int i = 2; i <= n; i++){
+            dp[i] = dp[i-1].add(dp[i-2]);
+        }
+        return dp[n];
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter number of stairs: ");
         int num = input.nextInt(); 
 
-        System.out.println("Number of ways = "+fibonacci(num));
+        System.out.println("Number of ways = "+fibonacciUsingDp(num));
     }
 }
